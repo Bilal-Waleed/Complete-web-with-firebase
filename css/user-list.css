@@ -1,0 +1,428 @@
+/* ✅ Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ✅ Dashboard Layout */
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* ✅ Sidebar */
+.sidebar {
+    width: 250px;
+    background: #1e1e2d;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* ✅ Sidebar Buttons */
+.sidebar-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    background: transparent;
+    color: white;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.sidebar-btn i {
+    font-size: 1.2rem;
+}
+
+.sidebar-btn:hover, .sidebar-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* ✅ Logout Button */
+.logout {
+    margin-top: auto;
+    color: #ff4d4d;
+}
+
+/* ✅ User Profile Section */
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+    justify-content: space-between; /* ✅ Items left-right align */
+}
+
+
+/* ✅ Notification Icon */
+.notification-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+    transition: 0.3s;
+}
+
+.notification-icon:hover {
+    color: #007bff; /* ✅ Hover Effect */
+}
+
+/* ✅ Notification Badge (Count) */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-card:hover {
+    transform: translateY(-3px); /* ✅ Smooth Hover Effect */
+}
+
+.profile-clickable {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.profile-clickable:hover {
+    opacity: 0.8;
+}
+
+/* ✅ Profile Avatar */
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    background-color: #3498db;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-transform: uppercase;
+}
+
+.profile-avatar img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ✅ Section Divider */
+.section-divider {
+    border: none;
+    height: 2px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* ✅ Main Content */
+.content {
+    flex: 1;
+    padding: 20px;
+    background: #f4f4f4;
+    overflow-y: auto;
+}
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-container input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#searchBtn {
+    background: #007bff;
+    border: none;
+    padding: 8px 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#searchbtn i {
+    font-size: 16px;
+}
+
+.no-user-found {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    margin-top: 20px;
+}
+
+
+/* ✅ User List */
+#users-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* ✅ 4 Columns */
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* ✅ User Card */
+.user-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* ✅ Hover Effect */
+.user-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ Profile Picture or Initial */
+.profile-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ✅ Alternating Background Colors */
+.user-card:nth-child(3n + 1) .profile-circle {
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+}
+
+.user-card:nth-child(3n + 2) .profile-circle {
+    background: linear-gradient(45deg, #ff6ec7, #ff85a2);
+}
+
+.user-card:nth-child(3n + 3) .profile-circle {
+    background: linear-gradient(45deg, #28a745, #85ff91);
+}
+
+/* ✅ Username */
+.user-name {
+    margin-top: 6px;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+/* ✅ Follow Button */
+.follow-btn {
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.follow-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #0088ff);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ✅ Menu Button */
+.menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #1e1e2d;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 101;
+}
+
+
+
+/* ✅ Users Header: "All Users" and "Friends" Button */
+.users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* ✅ Friends Button */
+.friends-btn {
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.friends-btn i {
+    font-size: 1rem;
+}
+
+.friends-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #0088ff);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1024px) {
+    #users-container {
+        grid-template-columns: repeat(3, minmax(200px, 1fr)); /* ✅ 3 Columns */
+    }
+}
+
+@media (max-width: 768px) {
+    #users-container {
+        grid-template-columns: repeat(2, minmax(180px, 1fr)); /* ✅ 2 Columns */
+    }
+}
+
+@media (max-width: 500px) {
+    #users-container {
+        grid-template-columns: repeat(1, minmax(200px, 1fr)); /* ✅ 1 Column */
+    }
+}
+
+@media (max-width: 600px) {
+    .users-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .friends-btn {
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+
+/* ✅ Responsive for Small Screens */
+@media (max-width: 768px) {
+    .content {
+        padding-top: 70px;
+    }
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100%;
+        z-index: 100;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .menu-btn {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background: #1e1e2d;
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 101;
+    }
+}
+
+/* ✅ Responsive Grid */
+@media (max-width: 1024px) {
+    #users-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    #users-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+

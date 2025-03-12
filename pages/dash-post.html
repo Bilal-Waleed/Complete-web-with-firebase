@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dash-post.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- ✅ Sidebar -->
+        <aside class="sidebar">
+            <h2>Menu</h2>
+        
+            <!-- ✅ Dashboard -->
+            <button class="sidebar-btn">
+                <i class="fas fa-home-alt"></i> Dashboard
+            </button>
+        
+            <!-- ✅ Users -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/user-list.html'">
+                <i class="fas fa-users"></i> Users
+            </button>
+        
+            <!-- ✅ Profile -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/profile.html'">
+                <i class="fas fa-user"></i> Profile 
+            </button>
+        
+            <!-- ✅ Messages -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/message.html'">
+                <i class="fas fa-envelope"></i> Messages
+            </button>
+        
+            <!-- ✅ Settings -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/settings.html'">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+        
+            <!-- ✅ Logout (niche fix karna) -->
+            <button class="sidebar-btn logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </aside>
+        
+
+        <!-- ✅ Menu Button for Small Screens -->
+        <button class="menu-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <main class="content">
+            <!-- ✅ User Profile Section -->
+            <div id="user-profile-container" class="profile-card"></div>
+        
+            <!-- ✅ Divider Line -->
+            <hr class="section-divider">
+        
+            <!-- ✅ Loading message -->
+            <p id="loading-message">Loading posts...</p>
+        
+            <!-- ✅ Posts will be dynamically inserted here -->
+            <div id="posts-container"></div>
+        </main>
+        
+    </div>
+
+    <div class="overlay" id="commentOverlay"></div>
+
+    <div class="modal comment-modal" id="commentModal">
+        <div class="modal-header">
+            <h2>Comments</h2>
+            <button class="close-modal" id="closeCommentModal">&times;</button>
+        </div>
+        <div id="commentsContainer"></div>
+        <div class="comment-input">
+            <input type="text" id="newComment" placeholder="Write a comment...">
+            <button id="submitComment">Post</button>
+        </div>
+    </div>
+
+    <!-- ✅ Logout Success Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="logoutModal">
+        <div class="checkmark-container">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="modal-content">Logout Successful!</div>
+    </div>
+
+    <!-- ✅ JavaScript -->
+    <script type="module" src="../js/dash-post.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/notifications.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- ✅ Sidebar -->
+        <aside class="sidebar">
+            <h2>Menu</h2>
+        
+            <!-- ✅ Dashboard -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/dash-post.html'">
+                <i class="fas fa-home-alt"></i> Dashboard
+            </button>
+        
+            <!-- ✅ Users -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/user-list.html'">
+                <i class="fas fa-users"></i> Users
+            </button>
+        
+            <!-- ✅ Profile -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/profile.html'">
+                <i class="fas fa-user"></i> Profile 
+            </button>
+        
+            <!-- ✅ Messages -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/message.html'">
+                <i class="fas fa-envelope"></i> Messages
+            </button>
+        
+            <!-- ✅ Settings -->
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/settings.html'">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+        </aside>
+
+        <!-- ✅ Menu Button for Small Screens -->
+        <button class="menu-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+                <!-- ✅ Friend Requests Section -->
+        <main class="content">
+            <h2>Notifications</h2>
+            <div id="requests-container"></div>
+        </main>
+
+
+
+    <!-- ✅ JavaScript -->
+    <script type="module" src="../js/notification.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="../css/edit-profile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- ✅ Back Button -->
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+
+        <div class="edit-profile-box">
+            <h2 style="text-align: center; margin-bottom: 5px ;">Edit Profile</h2>
+            <form id="edit-profile-form">
+                
+                <!-- ✅ Profile Picture -->
+                <div class="profile-pic-container">
+                    <label for="profile-pic" style="color: black; font-weight: bold; margin: 5px 0px;">Profile Picture:</label>
+                    <input type="file" id="profile-pic" accept="image/*">
+                    <img id="profile-preview" src="" alt="Profile Picture">
+                </div>
+
+                <!-- ✅ Username -->
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" maxlength="20" placeholder="Enter username">
+                    <p class="error-message" id="username-error"></p>
+                </div>
+
+                <!-- ✅ Bio -->
+                <div class="input-group">
+                    <label for="bio">Bio:</label>
+                    <textarea id="bio" maxlength="40" placeholder="Write something..."></textarea>
+                    <p class="error-message" id="bio-error"></p>
+                </div>
+
+                <!-- ✅ Submit Button -->
+                <button type="submit" id="save-profile">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ✅ Success Modal -->
+    <div class="overlay" id="successOverlay"></div>
+    <div class="modal" id="successModal">
+        <div class="checkmark-container">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="modal-content">Profile Updated Successfully!</div>
+    </div>
+
+    <!-- ✅ JavaScript -->
+    <script type="module" src="../js/edit-profile.js"></script>
+
+</body>
+</html>

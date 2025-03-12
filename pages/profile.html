@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- ✅ Sidebar -->
+        <aside class="sidebar">
+            <h2>Menu</h2>
+
+            <button class="sidebar-btn" onclick="window.location.href='dash-post.html'">
+                <i class="fas fa-home-alt"></i> Dashboard
+            </button>
+
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/user-list.html'">
+                <i class="fas fa-users"></i> Users
+            </button>
+
+            <button class="sidebar-btn active">
+                <i class="fas fa-user"></i> Profile
+            </button>
+
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/message.html'">
+                <i class="fas fa-envelope"></i> Messages
+            </button>
+
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/settings.html'">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+
+            <button class="sidebar-btn logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </aside>
+
+        <!-- ✅ Menu Button for Small Screens -->
+        <button class="menu-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- ✅ Main Content -->
+        <main class="content">
+            <div class="profile-section">
+                <div id="user-profile-container"></div>
+
+                <div class="create-post">
+                    <button id="create-post-btn">Create Post</button>
+                </div>
+
+                <h3>My Posts</h3>
+                <div id="user-posts-container">
+                    <p>Loading posts...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ✅ Create Post Modal -->
+    <div class="overlay" id="postOverlay"></div>
+
+    <div class="modal post-modal" id="postModal">
+        <div class="modal-header">
+            <h2>Create Post</h2>
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <textarea id="postContent" placeholder="What's on your mind?" rows="4"></textarea>
+        <button id="submitPost">Create Post</button>
+    </div>
+
+    <!-- ✅ Edit Post Modal -->
+    <div class="overlay" id="editPostOverlay"></div>
+
+    <div class="modal post-modal" id="editPostModal">
+        <div class="modal-header">
+            <h2>Edit Post</h2>
+            <button class="close-modal" id="closeEditModal">&times;</button>
+        </div>
+        <textarea id="editPostContent" placeholder="Edit your post..." rows="4"></textarea>
+        <button id="submitEditPost">Update Post</button>
+    </div>
+
+    <!-- ✅ Success Modal (For Create & Edit Post) -->
+    <div class="overlay" id="successOverlay"></div>
+
+    <div class="modal" id="successModal">
+        <div class="checkmark-container">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="modal-content" id="successMessage">Success!</div>
+    </div>
+
+        <!-- ✅ Delete Confirmation Modal -->
+    <div class="overlay" id="deleteOverlay"></div>
+
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h3>Are you sure?</h3>
+            <p>Do you really want to delete this post? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="cancelDelete" class="cancel-btn">Cancel</button>
+                <button id="confirmDelete" class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="commentOverlay"></div>
+
+    <div class="modal comment-modal" id="commentModal">
+        <div class="modal-header">
+            <h2>Comments</h2>
+            <button class="close-modal" id="closeCommentModal">&times;</button>
+        </div>
+        <div id="commentsContainer"></div>
+        <div class="comment-input">
+            <input type="text" id="newComment" placeholder="Write a comment...">
+            <button id="submitComment">Post</button>
+        </div>
+    </div>
+
+    <!-- ✅ Logout Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="logoutModal">
+        <div class="checkmark-container">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="modal-content">Logout Successful!</div>
+    </div>
+
+    <!-- ✅ JavaScript -->
+    <script type="module" src="../js/profile.js"></script>
+
+</body>
+</html>

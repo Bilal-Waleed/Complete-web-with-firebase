@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="../css/settings.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- ✅ Sidebar -->
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/dash-post.html'">
+                <i class="fas fa-home-alt"></i> Dashboard
+            </button>
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/user-list.html'">
+                <i class="fas fa-users"></i> Users
+            </button>
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/profile.html'">
+                <i class="fas fa-user"></i> Profile
+            </button>
+            <button class="sidebar-btn" onclick="window.location.href = '../pages/message.html'">
+                <i class="fas fa-envelope"></i> Messages
+            </button>
+            <button class="sidebar-btn active">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+            <button class="sidebar-btn logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </aside>
+
+        <!-- ✅ Menu Button for Small Screens -->
+        <button class="menu-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <main class="content">
+            <div class="settings-container">
+                <h2>Settings</h2>
+            
+                <div class="settings-option">
+                    <i class="fas fa-palette"></i>
+                    <a href="#">Theme</a>
+                </div>
+            
+                <div class="settings-option">
+                    <i class="fas fa-user-cog"></i>
+                    <a href="./edit-profile.html">Profile Management</a>
+                </div>
+            
+                <div class="settings-option">
+                    <i class="fas fa-users"></i>
+                    <a href="#">Groups</a>
+                </div>
+            
+                <div class="settings-option">
+                    <i class="fas fa-file-alt"></i>
+                    <a href="#">Pages</a>
+                </div>
+            
+                <div class="settings-option">
+                    <i class="fas fa-store"></i>
+                    <a href="#">Your Market</a>
+                </div>
+            
+                <div class="settings-option">
+                    <i class="fas fa-shield-alt"></i>
+                    <a href="#">Privacy and Security</a>
+                </div>
+            
+                <div class="settings-option">
+                    <i class="fas fa-video"></i>
+                    <a href="#">Reels</a>
+                </div>
+            
+                <div class="settings-option delete-account">
+                    <i class="fas fa-trash-alt"></i>
+                    <button id="delete-account">Delete Account</button>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+     <!-- ✅ Delete Account Confirmation Modal -->
+<div id="confirmDeleteOverlay" class="overlay">
+    <div id="confirmDeleteModal" class="modal">
+        <h2>Confirm Account Deletion</h2>
+        <p>Enter your password to delete your account:</p>
+        <input type="password" id="deletePassword" placeholder="Enter Password">
+        <p id="passwordError" class="error-message"></p> <!-- Error Message -->
+        <button id="confirmDeleteBtn">Delete Account</button>
+        <button id="cancelDeleteBtn">Cancel</button>
+    </div>
+</div>
+
+<!-- ✅ Success Modal -->
+<div id="successOverlay" class="overlay">
+    <div id="successModal" class="modal">
+        <div class="checkmark-container">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Account Deleted Successfully</h2>
+        <p>Your account has been removed.</p>
+    </div>
+</div>
+
+
+    <!-- ✅ Logout Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="logoutModal">
+        <div class="checkmark-container">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="modal-content">Logout Successful!</div>
+    </div>
+
+    <!-- ✅ JavaScript -->
+    <script type="module" src="../js/settings.js"></script>
+
+</body>
+</html>
