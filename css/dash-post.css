@@ -414,18 +414,6 @@ h1 {
     cursor: pointer;
 }
 
-.comment-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
 .reply-content {
     display: flex;
     justify-content: space-between;
@@ -470,7 +458,7 @@ h1 {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #eee;
+    background: #3498db;
     display: flex;
     justify-content: center;
     align-items: center;
