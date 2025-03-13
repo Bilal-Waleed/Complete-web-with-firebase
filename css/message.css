@@ -41,7 +41,7 @@ body {
     overflow-y: auto; /* Make user list scrollable */
     height: calc(100vh - 100px); /* Adjust height to fit within the sidebar */
   }
-  
+
 /* Unread Message Count Badge */
 .unread-count {
     background: #3498db;
@@ -203,7 +203,7 @@ body {
     position: fixed;
     top: 10px;
     left: 10px;
-    background: #4e4e4e;
+    background: #1e1e2d;
     color: white;
     border: none;
     padding: 8px 10px;

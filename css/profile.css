@@ -265,7 +265,7 @@ h3 {
     color: #777;
 }
 
-/* ✅ Menu Button for Small Screens */
+/* ✅ Menu Button for Mobile */
 .menu-btn {
     display: none;
     position: fixed;
@@ -274,12 +274,13 @@ h3 {
     background: #1e1e2d;
     color: white;
     border: none;
-    font-size: 1.5rem;
-    padding: 10px 15px;
+    font-size: 1rem;
+    padding: 8px 10px;
     border-radius: 5px;
     cursor: pointer;
     z-index: 101;
 }
+
 
 /* ✅ Responsive */
 @media (max-width: 768px) {
