@@ -464,6 +464,7 @@ h1 {
     align-items: center;
     font-weight: bold;
     margin-right: 10px;
+    color: white;
 }
 
 .reply-text {
@@ -486,6 +487,7 @@ h1 {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+    margin-right: 10px;
 }
 
 /* ✅ Comment Text Section */

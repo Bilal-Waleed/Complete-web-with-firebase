@@ -787,12 +787,13 @@ h3 {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #eee;
+    background: #3498db;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     margin-right: 10px;
+    color: white;
 }
 
 .reply-content {
@@ -839,12 +840,12 @@ h3 {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #eee;
+    background: #3498db;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    margin-right: 10px;
+    color: white;
 }
 
 .reply-text {
