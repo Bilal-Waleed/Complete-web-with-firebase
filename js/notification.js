@@ -1,15 +1,25 @@
 // ✅ Firebase Imports
 import { 
-    auth, db, doc, getDoc, collection, getDocs, query, where, updateDoc, deleteDoc, addDoc, onSnapshot 
+    db, doc, getDoc, collection, getDocs, query, where, updateDoc, deleteDoc, addDoc, onSnapshot 
 } from "../js/firebase.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const storedUID = localStorage.getItem("userUID");
     const requestsContainer = document.querySelector("#requests-container");
 
+    // Redirect to login if no UID is found
     if (!storedUID) {
         window.location.href = "login-signup.html";
         return;
+    }
+
+    // ✅ Helper Function to Get Avatar
+    function getAvatar(userData) {
+        if (userData.profilePic) {
+            return `<img src="${userData.profilePic}" class="profile-circle">`;
+        } else {
+            return `<div class="avatar-placeholder">${userData.username.charAt(0).toUpperCase()}</div>`;
+        }
     }
 
     // ✅ Friend Requests in Real-Time
@@ -28,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     requestCard.classList.add("notification-card");
                     requestCard.setAttribute("data-notification-id", change.doc.id);
                     requestCard.innerHTML = `
-                        <img src="${senderData.profilePic || 'default-avatar.png'}" class="profile-circle">
+                        ${getAvatar(senderData)}
                         <div class="notification-info">
                             <p><strong>${senderData.username}</strong> sent you a friend request.</p>
                             <p class="timestamp">${new Date(request.timestamp.toDate()).toLocaleString()}</p>
@@ -38,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                             <button class="cancel-btn" data-request-id="${change.doc.id}">Decline</button>
                         </div>
                     `;
-                    requestsContainer.prepend(requestCard); // ✅ Latest request sabse upar add ho
+                    requestsContainer.prepend(requestCard); // ✅ Latest request added at the top
                 }
 
                 if (change.type === "removed") {
@@ -48,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    // ✅ Likes & Comments Notifications (Already Real-Time)
+    // ✅ Likes & Comments Notifications (Real-Time)
     async function fetchPostNotifications() {
         const postsQuery = query(collection(db, "posts"), where("uid", "==", storedUID));
         const postsSnapshot = await getDocs(postsQuery);
@@ -72,6 +82,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                     document.querySelectorAll(`[data-post-id="${postId}"][data-type="like"]`).forEach(el => el.remove());
 
                     likesArray.forEach(async (userId) => {
+                        // Skip if the user liked their own post
+                        if (userId === storedUID) return;
+
                         const likerSnap = await getDoc(doc(db, "users", userId));
                         if (!likerSnap.exists()) return;
 
@@ -82,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         likeCard.setAttribute("data-post-id", postId);
                         likeCard.setAttribute("data-type", "like");
                         likeCard.innerHTML = `
-                            <img src="${likerData.profilePic || 'default-avatar.png'}" class="profile-circle">
+                            ${getAvatar(likerData)}
                             <div class="notification-info">
                                 <p><strong>${likerData.username}</strong> liked your post.</p>
                                 <p class="timestamp">${new Date().toLocaleString()}</p>
@@ -99,7 +112,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 snapshot.docChanges().forEach(async (change) => {
                     if (change.type === "added") {
                         const commentData = change.doc.data();
-                        const commenterSnap = await getDoc(doc(db, "users", commentData.uid));
+                        const commenterId = commentData.uid;
+
+                        // Skip if the user commented on their own post
+                        if (commenterId === storedUID) return;
+
+                        const commenterSnap = await getDoc(doc(db, "users", commenterId));
                         if (!commenterSnap.exists()) return;
 
                         const commenterData = commenterSnap.data();
@@ -107,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         commentCard.classList.add("notification-card");
                         commentCard.setAttribute("data-notification-id", change.doc.id);
                         commentCard.innerHTML = `
-                            <img src="${commenterData.profilePic || 'default-avatar.png'}" class="profile-circle">
+                            ${getAvatar(commenterData)}
                             <div class="notification-info">
                                 <p><strong>${commenterData.username}</strong> commented on your post: "${commentData.comment}"</p>
                                 <p class="timestamp">${new Date(commentData.createdAt.toDate()).toLocaleString()}</p>
@@ -124,8 +142,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     // ✅ Load Notifications on Page Load
-    fetchFriendRequestsRealTime(); // ✅ Now Friend Requests Will Be Real-Time
-    fetchPostNotifications(); // ✅ Likes & Comments are already real-time
+    fetchFriendRequestsRealTime(); // ✅ Friend Requests in Real-Time
+    fetchPostNotifications(); // ✅ Likes & Comments in Real-Time
 
     // ✅ Accept/Decline Friend Request
     document.addEventListener("click", async function (event) {
@@ -161,5 +179,4 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelector(".sidebar").classList.toggle("open");
     }
     window.toggleSidebar = toggleSidebar;
-
 });
