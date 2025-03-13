@@ -141,21 +141,18 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // ✅ Load Notifications on Page Load
-    fetchFriendRequestsRealTime(); // ✅ Friend Requests in Real-Time
-    fetchPostNotifications(); // ✅ Likes & Comments in Real-Time
 
-    // ✅ Accept/Decline Friend Request
+    fetchFriendRequestsRealTime();
+    fetchPostNotifications(); 
+
     document.addEventListener("click", async function (event) {
         const requestId = event.target.getAttribute("data-request-id");
 
         if (event.target.classList.contains("accept-btn")) {
             const senderId = event.target.getAttribute("data-sender-id");
 
-            // ✅ Update Firestore: Request Accepted
             await updateDoc(doc(db, "friend_requests", requestId), { status: "accepted" });
 
-            // ✅ Add Friend Relationship
             await addDoc(collection(db, "friends"), {
                 user1: storedUID,
                 user2: senderId,
@@ -168,13 +165,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         if (event.target.classList.contains("cancel-btn")) {
-            // ✅ Delete Request from Firestore
+
             await deleteDoc(doc(db, "friend_requests", requestId));
             event.target.parentElement.remove();
         }
     });
 
-    // ✅ Sidebar Toggle Function
     function toggleSidebar() {
         document.querySelector(".sidebar").classList.toggle("open");
     }
